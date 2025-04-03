@@ -1,0 +1,117 @@
+/* Basic Reset & Body Styling */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f4f8;
+    color: #333;
+}
+
+.container {
+    text-align: center;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin-bottom: 25px;
+    color: #2c3e50;
+}
+
+/* Flashcard Container - needed for perspective */
+.flashcard-container {
+    width: 250px; /* Card width */
+    height: 350px; /* Card height */
+    perspective: 1000px; /* Creates the 3D space for the flip */
+    margin: 20px auto;
+}
+
+/* Flashcard Element */
+.flashcard {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d; /* Makes children maintain 3D position */
+    transition: transform 0.6s;   /* Animation speed for the flip */
+    cursor: pointer;
+}
+
+/* Class added by JS to flip the card */
+.flashcard.is-flipped {
+    transform: rotateY(180deg);
+}
+
+/* Shared styles for Front and Back faces */
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Hides the back side when facing away */
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5em; /* Large text for characters */
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Front face specific styles */
+.card-front {
+    background-color: #e9ecef;
+    color: #343a40;
+    font-size: 7em; /* Even larger for Hiragana */
+}
+
+/* Back face specific styles */
+.card-back {
+    background-color: #4a90e2;
+    color: white;
+    transform: rotateY(180deg); /* Initially rotated */
+}
+
+/* Controls */
+.controls {
+    margin-top: 25px;
+}
+
+button {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: #4cae4c;
+}
+
+#flip-button {
+    background-color: #f0ad4e;
+}
+
+#flip-button:hover {
+    background-color: #ec971f;
+}
+
+/* Progress Indicator */
+.progress {
+    margin-top: 20px;
+    color: #666;
+    font-size: 0.9em;
+}
